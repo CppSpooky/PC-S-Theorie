@@ -7,9 +7,9 @@
 
 int main() {
 	
-	long double T_s = 260.15; // -13°C in Kelvin
-	long double T_K = 0; //Kühltemperartur des Eises in Kelvin
-	long double E_A = 372; // Aufwärmenergie KJ/Kg
+	long double T_s = 260.15; // -13Â°C in Kelvin
+	long double T_K = 0; //KÃ¼hltemperartur des Eises in Kelvin
+	long double E_A = 372; // AufwÃ¤rmenergie KJ/Kg
 	long double H_p = 8360; // Brennwert in KJ/kg
 	long double m = 0.2; // Masse des Eises in kg
 
@@ -44,9 +44,9 @@ int main() {
 
 	image.Export("plot_mt_shaded.bmp");	
 	
-	//#error Warnung: Der folgende Teil kann sehr große Datenmengen generieren. Präprozessoranweisung entfernen um fortzufahren!
+	#error Warnung: Der folgende Teil kann sehr groÃŸe Datenmengen generieren. PrÃ¤prozessoranweisung entfernen um fortzufahren!
 
-	long double range[2] = {0, 10000}; // Intervall von H_p für die Animation
+	long double range[2] = {0, 10000}; // Intervall von H_p fÃ¼r die Animation
 	int lenght = 8; //Anzahl der erzeugten Bilder, muss durch Threadzahl teilbar sein
 	gif_main(range, lenght, T_s, E_A, m);
 
@@ -54,4 +54,5 @@ int main() {
 	image.Export("plot_s_t.bmp");
 
 	return 0;
+
 }
