@@ -223,7 +223,8 @@ void gif_main(long double range[2], int lenght, long double T_s, long double E_A
 	//Multithreading für die Animation
 
 	std::vector<std::thread> t;
-	int threads = std::thread::hardware_concurrency();
+	int threads = 1;
+	if (std::thread::hardware_concurrency() > 0) { threads = std::thread::hardware_concurrency(); }
 
 	//Starte alle Threads, Singlethreading wahrscheinlich sinnvoller bei langsamer Speicherung, da der Bildexport dann deutlich länger dauert als die Rechenzeit
 	for (int i = 0; i < threads; i++) {
@@ -336,7 +337,8 @@ void gif_main_queue(long double range[2], int lenght, long double T_s, long doub
 	//Multithreading für die Animation
 
 	std::vector<std::thread> t;
-	int threads = std::thread::hardware_concurrency();
+	int threads = 1;
+	if (std::thread::hardware_concurrency() > 0) { threads = std::thread::hardware_concurrency(); }
 	int status = 0;
 
 	for (int i = 0; i < threads; i++) {
