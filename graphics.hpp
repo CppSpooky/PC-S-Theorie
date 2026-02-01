@@ -174,7 +174,7 @@ void Image::Export(const char * path)
 	auto t1 = std::chrono::high_resolution_clock::now();
 	auto diff = t1 - t0;
 
-	std::cout << "File created!" << std::endl;
+	//std::cout << "File created!" << std::endl;
 	std::cout << "Export completed in " << std::chrono::duration_cast<std::chrono::milliseconds>(diff).count() << " ms\n";
 
 }

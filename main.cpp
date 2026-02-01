@@ -7,9 +7,9 @@
 
 int main() {
 	
-	long double T_s = 260.15; // -13¬∞C in Kelvin
-	long double T_K = 0; //K√ºhltemperartur des Eises in Kelvin
-	long double E_A = 372; // Aufw√§rmenergie KJ/Kg
+	long double T_s = 260.15; // -13∞C in Kelvin
+	long double T_K = 0; //K¸hltemperartur des Eises in Kelvin
+	long double E_A = 372; // Aufw‰rmenergie KJ/Kg
 	long double H_p = 8360; // Brennwert in KJ/kg
 	long double m = 0.2; // Masse des Eises in kg
 
@@ -23,7 +23,9 @@ int main() {
 
 	Image image(plot_width, plot_height);
 
-	int threads = std::thread::hardware_concurrency();
+	int threads = 1;
+	if (std::thread::hardware_concurrency() > 0) { threads = std::thread::hardware_concurrency(); }
+	std::cout << "Threads: " << threads << std::endl;
 	std::vector<std::thread> v;
 
 	//Starte alle Threads
@@ -44,15 +46,16 @@ int main() {
 
 	image.Export("plot_mt_shaded.bmp");	
 	
-	#error Warnung: Der folgende Teil kann sehr gro√üe Datenmengen generieren. Pr√§prozessoranweisung entfernen um fortzufahren!
+	#error Warnung: Der folgende Teil kann sehr groﬂe Datenmengen generieren. Pr‰prozessoranweisung entfernen um fortzufahren!
 
-	long double range[2] = {0, 10000}; // Intervall von H_p f√ºr die Animation
-	int lenght = 8; //Anzahl der erzeugten Bilder, muss durch Threadzahl teilbar sein
+	long double range[2] = {0, 10000}; // Intervall von H_p f¸r die Animation
+	int lenght = 16; //Anzahl der erzeugten Bilder, muss durch Threadzahl teilbar sein
 	gif_main(range, lenght, T_s, E_A, m);
+
+	gif_main_queue(range, lenght, T_s, E_A, m);
 
 	Bild_s_t(image, k, plot_width, plot_height, T_s, E_A, H_p, m);
 	image.Export("plot_s_t.bmp");
 
 	return 0;
-
 }
